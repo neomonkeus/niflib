@@ -78,7 +78,7 @@ void bhkMoppBvTreeShape::Write( ostream& out, const map<NiObjectRef,unsigned int
 	//--END CUSTOM CODE--//
 
 	bhkBvTreeShape::Write( out, link_map, missing_link_stack, info );
-	moppDataSize = (unsigned int)(oldMoppData.size());
+	moppDataSize = (unsigned int) (info.version <= 0x0A000100) ? oldMoppData.size() : moppData.size();
 	if ( info.version < VER_3_3_0_13 ) {
 		WritePtr32( &(*shape), out );
 	} else {
